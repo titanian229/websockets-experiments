@@ -10,6 +10,8 @@ interface ServerToClientEvents {
   withAck: (d: string, callback: (e: number) => void) => void;
   transmitMessage: (message: string, callback: () => void) => void;
   dispatchTextDiff: (diff: any, callback: (response: ServerResponse) => void) => void;
+  systemMessage: (message: string, callback: () => void) => void;
+  serverStateChange: (state: any, callback: () => void) => void;
 }
 
 interface ClientToServerEvents {

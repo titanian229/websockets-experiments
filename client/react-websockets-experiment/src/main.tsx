@@ -6,7 +6,7 @@ import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ChakraProvider resetCSS>
+    <ChakraProvider resetCSS toastOptions={{ defaultOptions: { position: "bottom-right" } }}>
       <App />
     </ChakraProvider>
   </React.StrictMode>

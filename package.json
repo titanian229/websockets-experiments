@@ -1,0 +1,20 @@
+{
+  "name": "websockets-experiments",
+  "version": "1.0.0",
+  "description": "Experiment with websocket API",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd client/react-websockets-experiment && npm run build",
+    "start": "node app/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/titanian229/websockets-experiments.git"
+  },
+  "author": "James Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/titanian229/websockets-experiments/issues"
+  },
+  "homepage": "https://github.com/titanian229/websockets-experiments#readme"
+}

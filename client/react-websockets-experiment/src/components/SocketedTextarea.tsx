@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { socket } from "../socket";
 import { compare, applyPatch } from "fast-json-patch";
+import { useToast, Textarea } from "@chakra-ui/react";
+
+import { socket } from "../socket";
 
 type SocketedTextareaProps = {
   isConnected: boolean;
@@ -10,6 +12,8 @@ const SocketedTextarea = ({ isConnected = false }: SocketedTextareaProps) => {
   const [textarea, setTextarea] = useState<string | null>(null);
   const [previousTextarea, setPreviousTextarea] = useState<string | null>(null);
 
+  const toast = useToast();
+
   const getTextAreaState = async () => {
     // Get initial state of TextArea
     const initialTextAreaState = await fetch("/api/textareastate")
@@ -17,6 +21,13 @@ const SocketedTextarea = ({ isConnected = false }: SocketedTextareaProps) => {
       .catch((err) => console.error(err));
     if (!initialTextAreaState?.textareaValue) {
       // TODO: Errors to user
+      toast({
+        title: "Error",
+        description: "Server down",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
       return;
     }
 
@@ -26,7 +37,13 @@ const SocketedTextarea = ({ isConnected = false }: SocketedTextareaProps) => {
   const sendTextareaUpdate = async (operationalTransforms: any) => {
     socket.emit("sendTextareaUpdate", operationalTransforms, (response) => {
       if (!response.success === true) {
-        // TODO: Raise error to user
+        toast({
+          title: "Error",
+          description: "Error sending update, resetting to server state",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
 
         // If the update fails, erase local state and get state from server
         getTextAreaState();
@@ -74,8 +91,8 @@ const SocketedTextarea = ({ isConnected = false }: SocketedTextareaProps) => {
   }, [textarea]);
 
   return (
-    <div>
-      <textarea
+    <div style={{ width: "100%" }}>
+      <Textarea
         disabled={!isConnected}
         value={textarea === null ? "" : textarea}
         onChange={(event) => setTextarea(event.target.value)}
