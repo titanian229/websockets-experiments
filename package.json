@@ -1,21 +1,24 @@
 {
-  "name": "websockets-experiments",
+  "name": "app",
   "version": "1.0.0",
-  "description": "Experiment with websocket API",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cd client/react-websockets-experiment && npm run build",
-    "start": "cd app && node server.js",
-    "postinstall": "npm install --prefix app && npm install --prefix client"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "postinstall": "npm install --prefix client",
+    "build": "cd client && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/titanian229/websockets-experiments.git"
-  },
-  "author": "James Lee",
+  "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/titanian229/websockets-experiments/issues"
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fast-json-patch": "^3.1.1",
+    "socket.io": "^4.6.1"
   },
-  "homepage": "https://github.com/titanian229/websockets-experiments#readme"
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
 }

@@ -72,7 +72,7 @@ io.on("connection", (socket) => {
 
 app.get("/api/textareastate", (req, res) => res.status(200).json({ textareaValue, lastUpdate: updates?.[0]?.id }));
 
-app.use(express.static(path.join(__dirname, "../client/react-websockets-experiment/dist")));
+app.use(express.static(path.join(__dirname, "client/dist")));
 
 /*
 On page load, client asks for state of textarea
