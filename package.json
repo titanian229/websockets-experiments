@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
     "start": "node server.js",
-    "install": "cd client && npm install",
+    "install": "npm install && npm install --prefix client",
     "build": "cd client && npm run build"
   },
   "author": "",
