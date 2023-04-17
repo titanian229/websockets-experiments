@@ -4,8 +4,9 @@
   "description": "Experiment with websocket API",
   "main": "index.js",
   "scripts": {
-    "build": "cd app && npm install && cd ../client/react-websockets-experiment && npm install && npm run build",
-    "start": "node app/server.js"
+    "build": "cd client/react-websockets-experiment && npm run build",
+    "start": "cd app && node server.js",
+    "postinstall": "npm install --prefix app && npm install --prefix client"
   },
   "repository": {
     "type": "git",
